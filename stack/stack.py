@@ -42,12 +42,15 @@ class Stack:
         #     self.size -= 1
         #     return self.storage.pop()
         # 2. use LinkedList as storage
-        if self.size == 0:
+        if self.size == 0:  # if the stack has no items return none.
             return None
         else:
             self.size -= 1
             return self.storage.remove_tail()
-# the idea of stacks is pretty simple logic:
+
+# the idea of stacks logic is:
 # add to the tail and increment the size
 # remove from the tail and decrement the size.
 # when the stack has no items in it we return none.
+# you could think of stack as dishes in a resturant after they
+# are wash and stacked 1 on top the other.
