@@ -39,16 +39,44 @@ class DoublyLinkedList:
     """
 
     def add_to_head(self, value):
-        pass
+        # create instance of ListNode with value
+        new_node = ListNode(value, None, None)
+# increment the DLL length attribute
+        self.length += 1
+# if DLL is empty
+        if not self.head and not self.tail:
+            # set head and tail to the new node instance
+            self.head = new_node
+            self.tail = new_node
+# if DLL is not empty
+# set new node's next to current head
+# set head's prev to new node
+# set head to the new node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
 
     """
-    Removes the List's current head node, making the
+   Removes the List's current head node, making the
     current head's next node the new head of the List.
     Returns the value of the removed Node.
     """
 
     def remove_from_head(self):
-        pass
+        value = self.head.value
+# store the value of the head
+# decrement the length of the DLL
+# delete the head
+# if head.next is not None
+# set head.next's prev to None
+# set head to head.next
+# else (if head.next is None)
+# set head to None
+# set tail to None
+        self.delete(self.head)
+# return the value
+        return value
 
     """
     Wraps the given value in a ListNode and inserts it
@@ -86,7 +114,7 @@ class DoublyLinkedList:
         value = self.tail.value
     # call the delete fun to delete tail from dll
         self.delete(self.tail)
-     # return the value
+        # return the value
         return value
 
     """
