@@ -123,7 +123,21 @@ class DoublyLinkedList:
     """
 
     def move_to_front(self, node):
-        pass
+        # first node is the head return
+        if node is self.head:
+            return
+        # store the value
+        value = node.value
+        # if the value is the tail remove the tail
+        if node is self.tail:
+            self.remove_from_tail
+        else:
+            # call the delete method
+            node.delete()
+            # decrement the dll length attr
+            self.length -= 1
+            # pass in the value in the add_to_head
+            self.add_to_head(value)
 
     """
     Removes the input node from its current spot in the
@@ -131,7 +145,22 @@ class DoublyLinkedList:
     """
 
     def move_to_end(self, node):
-        pass
+        # if the given node is the tail return
+        if node is self.tail:
+            return
+        # store the value
+        value = node.value
+        # if the node is the head
+        if node is self.head:
+            self.remove_from_head()
+            self.add_to_tail(value)
+        else:
+            # call delete
+            node.delete()
+            # decrement the dll length attr
+            self.length -= 1
+            # pass in value in the add_to_tail
+            self.add_to_tail(value)
 
     """
     Deletes the input node from the List, preserving the
@@ -180,4 +209,18 @@ class DoublyLinkedList:
     """
 
     def get_max(self):
-        pass
+        # if is not the head return none
+        if not self.head:
+            return None
+        # store the value for max and current
+        max_val = self.head.value
+        current = self.head
+        # while loop
+        while current:
+            # if the current head value is greater than the head value
+            if current.value > max_val:
+                # set the max_val to that head value
+                max_val = current.value
+                # set current to next
+                current = current.next
+        return max_val
