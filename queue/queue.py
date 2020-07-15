@@ -19,28 +19,31 @@ from singly_linked_list import LinkedList
 class Queue:
     def __init__(self):
         self.size = 0
-        # 1. use array as storage
-        # self.storage = []
         # 2. use LinkedList as storage
         # 3. on initialization head & tail = none
         self.storage = LinkedList()
 
-# if we try to find out the lenght of a queue it will return the
+        # 1. use array as storage
+        # self.storage = []
+
+
+# if we try to find out the length of a queue it will return the
 # size variable.
 
     def __len__(self):
         return self.size
 
-    def enqueue(self, value):
         # 1. use array as storage
         # self.storage.append(value)
         # self.size += 1
+
         # 2. use LinkedList as storage
         # 3. this is adding to the tail of the link list.
+
+    def enqueue(self, value):
         self.size += 1
         self.storage.add_to_tail(value)
 
-    def dequeue(self):
         # 1. use array as storage
         # if self.size == 0:
         #     return None
@@ -51,6 +54,8 @@ class Queue:
         #     return value
         # 2. use LinkedList as storage
         # 3. This will remove a node from the head of the link list.
+
+    def dequeue(self):
         if self.size == 0:
             return None
         else:
