@@ -12,9 +12,9 @@ class ListNode:
 
     def delete(self):
         if self.prev:
-            self.prev.next == self.next
+            self.prev.next = self.next
         if self.next:
-            self.next.previous == self.prev
+            self.next.prev = self.prev
 
 
 """

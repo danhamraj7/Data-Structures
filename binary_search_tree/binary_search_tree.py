@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -17,21 +19,63 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # Case 1: given value is less than self.value
+        #  go to the left block
+        if value < self.value:
+            # If there is no left child, insert value here
+            # the root pointer will now point to this node
+            if self.left is None:
+                self.left = BSTNode(value)
+            # if the left block has a child
+            else:
+                # now we are in the sub tree.
+                self.left.insert(value)  # Recurrsion
+        elif value >= self.value:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
 
-    # Return True if the tree contains the value
-    # False if it does not
     def contains(self, target):
-        pass
+        # Case 1: self.value is equal to the target
+        if self.value == target:
+            return True
+        # Case 2: target is less than self.value
+        if target < self.value:
+            # if self.left is None, it isn't in the tree
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        # Case 3: otherwise
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
 
     # Return the maximum value found in the tree
+
     def get_max(self):
-        pass
+        # just keep going right until you cannot go any more
+        if self.right is None:
+            return self.value
+        else:
+            return self.right.get_max
 
-    # Call the function `fn` on the value of each node
+    # Call the function `fn` on the value of each node recu
+    # this will not return anything
+
     def for_each(self, fn):
-        pass
-
+        # this method will want to traverse every tree node
+        # this has to call the fn on the self.value
+        fn(self.value)
+        # if there is a left child call the same fn in the left child
+        if self.left:
+            self.left.for_each(fn)
+        # if there is a right side call the fn on the right child
+        if self.right:
+            self.right.for_each(fn)
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
